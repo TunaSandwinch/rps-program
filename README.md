@@ -1,1 +1,1 @@
-# rps-program
+# Rock Paper Scissors By ME
