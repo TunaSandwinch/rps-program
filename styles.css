@@ -1,3 +1,84 @@
-body{
+body, html{
     background-color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+p{
+    color:white;
+}
+
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-user-choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-result{
+    color: white;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button{
+    background-color: grey;
+    color: white;
+    margin-right: 5px;
+    border-style: solid;
+    border-radius: 8px;
+    text-align: center;
+    width: 80px;
+    height: 35px;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 8px;
+}
+.versus{
+    background-color: black;
+}
+
+.container-match-info{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-user-choice, .container-comp-choice{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center
+}
+
+.comp-choice, .user-choice{
+    width: 100px;
+    background-color: blue;
+    width: 200px;
+    height: 30px;
 }
