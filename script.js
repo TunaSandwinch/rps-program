@@ -1,67 +1,11 @@
 
-
-// function playgame(numOfRuounds){
-//     let Cscore = 0;
-//     let Pscore = 0;
-//     for (let i = 0; i < numOfRuounds;){
-//         i++
-//         let playerChoice = prompt("Choose! : rock, paper, or scisssor");
-//         let Compchoice = chooseSide();
-//         console.log(Compchoice);
-//         console.log(playerChoice)
-    
-//         if(playerChoice.toLocaleLowerCase() == "rock"){
-//             if(Compchoice == "scissor"){
-//                Pscore+=1;
-//                console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You WIN!-----> Score: ${Cscore} / ${Pscore}`);
-//             }else if(Compchoice == "paper"){
-//                 Cscore+=1;
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You Lose! -----> Score: ${Cscore} / ${Pscore}`);
-//             }else{
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} Its A Tie! -----> Score: ${Cscore} / ${Pscore}`);
-//             }
-    
-//         }else if(playerChoice.toLowerCase()== "scissor"){
-//             if(Compchoice == "paper"){
-//                 Pscore+=1;
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You WIN! -----> Score: ${Cscore} / ${Pscore}`);
-//              }else if(Compchoice == "rock"){
-//                  Cscore+=1;
-//                  console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You Lose! -----> Score: ${Cscore} / ${Pscore}`);
-//              }else{
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} Its A Tie! -----> Score: ${Cscore} / ${Pscore}`);
-//              }
-//         }else if (playerChoice.toLowerCase() == "paper"){
-//             if(Compchoice == "rock"){
-//                 Pscore+=1;
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You WIN! -----> Score: ${Cscore} / ${Pscore}`);
-//              }else if(Compchoice == "scissor"){
-//                  Cscore+=1;
-//                  console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} You Lose! -----> Score: ${Cscore} / ${Pscore}`);
-//              }else{
-//                 console.log(`Computer: ${Compchoice} , Player Choice: ${playerChoice} Its A Tie! -----> Score: ${Cscore} / ${Pscore}`);
-//              }  
-//         }
-        
-//     }
-
-//     if (Cscore > Pscore ){
-//         console.log("COMPUTER WINS!");
-//     }else if(Pscore > Cscore){
-//         console.log("YOU WIN!");
-//     }else{
-//         console.log("It's A tie!");
-//     }
-// }
-
-// playgame(5)
-
 const buttonRock = document.querySelector(".rock");
 const buttonPaper = document.querySelector(".paper");
 const buttonScissor = document.querySelector(".scissor");
 const pUserChoice = document.querySelector(".user-choice");
 const pCompChoice = document.querySelector(".comp-choice");
 const pScore = document.querySelector(".score");
+const h1Winner = document.querySelector(".winner")
 let userScore = 0;
 let compScore = 0;
 
@@ -116,28 +60,68 @@ function setScore(winner){
     }
 }
 
+function showPlayersChoice(refTag, string){
+    refTag.textContent = string;
+}
+
+function showWInner(refTag, winner){
+    if(compScore == 5 || userScore == 5){
+        if(compScore > userScore){
+            alert("YOU LOSE!!!");
+            refTag.textContent = "You Lost the game :<";
+            
+        }else{
+            alert("YOU WIN!!!")
+            refTag.textContent = "You Won the Game!!!";
+        }
+        compScore = 0;
+        userScore = 0;
+    }else{
+        if(winner == "user"){
+            refTag.textContent = "You Won this Round!";
+        }else if(winner == "comp"){
+            refTag.textContent = "Computer Won this Round!";
+        }else{
+            refTag.textContent ="IT's A TIE!!!"
+        }
+    }
+
+
+}
+
 
 
 buttonRock.addEventListener("click", ()=>{
-  let winner =  whoWIns("rock", compChoice());
-  setScore(winner)
+  let eChoice = compChoice();
+  let winner = whoWIns("rock", eChoice);
+  setScore(winner);
   console.log(compScore, userScore); 
+  showPlayersChoice(pUserChoice, "rock");
+  showPlayersChoice(pCompChoice, eChoice);
   showScore(pScore);
-  
+  showWInner(h1Winner, winner);
 })
 
 buttonPaper.addEventListener("click", ()=>{
-    let winner = whoWIns("paper", compChoice());
+    let eChoice = compChoice();
+    let winner = whoWIns("paper", eChoice);
     setScore(winner);
     console.log(compScore, userScore); 
-     showScore(pScore);
+    showPlayersChoice(pUserChoice, "paper");
+    showPlayersChoice(pCompChoice, eChoice);
+    showScore(pScore);
+    showWInner(h1Winner, winner);
 })
 
 buttonScissor.addEventListener("click",()=>{
-    let winner = whoWIns("scissor", compChoice());
+    let eChoice = compChoice();
+    let winner = whoWIns("scissor", eChoice);
     setScore(winner);
-    console.log(compScore, userScore);  
+    console.log(compScore, userScore); 
+    showPlayersChoice(pUserChoice, "scissor");
+    showPlayersChoice(pCompChoice, eChoice);
     showScore(pScore);
+    showWInner(h1Winner, winner);
 })
 
 
