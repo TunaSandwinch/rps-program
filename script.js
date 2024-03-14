@@ -59,6 +59,9 @@
 const buttonRock = document.querySelector(".rock");
 const buttonPaper = document.querySelector(".paper");
 const buttonScissor = document.querySelector(".scissor");
+const pUserChoice = document.querySelector(".user-choice");
+const pCompChoice = document.querySelector(".comp-choice");
+const pScore = document.querySelector(".score");
 let userScore = 0;
 let compScore = 0;
 
@@ -101,6 +104,10 @@ function whoWIns(user,comp){
     }
 }
 
+function showScore(tag){
+    tag.textContent = `${userScore} - ${compScore}`;
+}
+
 function setScore(winner){
     if(winner == "user"){
         userScore += 1;
@@ -110,23 +117,27 @@ function setScore(winner){
 }
 
 
+
 buttonRock.addEventListener("click", ()=>{
   let winner =  whoWIns("rock", compChoice());
   setScore(winner)
-  console.log(compScore, userScore);
-
+  console.log(compScore, userScore); 
+  showScore(pScore);
+  
 })
 
 buttonPaper.addEventListener("click", ()=>{
     let winner = whoWIns("paper", compChoice());
     setScore(winner);
-    console.log(compScore, userScore);
+    console.log(compScore, userScore); 
+     showScore(pScore);
 })
 
 buttonScissor.addEventListener("click",()=>{
     let winner = whoWIns("scissor", compChoice());
     setScore(winner);
     console.log(compScore, userScore);  
+    showScore(pScore);
 })
 
 
